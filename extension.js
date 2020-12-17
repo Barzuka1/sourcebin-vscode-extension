@@ -20,25 +20,32 @@ function activate(context) {
 			content = getText(editor.selection)
 		}
 
-		let copyText = 'Copy Link'
-		let rawLink = 'Copy Raw Link'
+		let copyLink = 'Copy Link'
+		let openLink = 'Open Link'
+
+		let index = 0
+		editor.document.fileName.split('\\').forEach(obj => {
+			index++
+		})
+
+		let fileName = editor.document.fileName.split('\\')[index-1].toString()
+
 		sourcebin.create([
 			{
-				name: editor.document.fileName,
+				name: fileName,
 				languageId: editor.document.languageId,
 				content: content
 			}
 		], {
-			title: editor.document.fileName,
+			title: fileName,
 			description: 'Created with SourcebinUpload (vscode extension)'
 		})
-		.then(data => vscode.window.showInformationMessage("Bin created.", copyText, rawLink).then(s => {
-			if (s === copyText) {
+		.then(data => vscode.window.showInformationMessage("Bin created.", copyLink, openLink).then(s => {
+			if (s === copyLink) {
 				clipboardy.writeSync(data.short)
-			} else if (s === rawLink) {
-				clipboardy.writeSync(data.files[0].raw)
+			} else if (s === openLink) {
+				vscode.env.openExternal(vscode.Uri.parse(data.short))
 			}
-			console.log(data)
 		}))
 		.catch(err => vscode.window.showErrorMessage(err))
 
