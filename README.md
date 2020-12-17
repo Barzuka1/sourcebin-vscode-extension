@@ -8,8 +8,10 @@
   - Easy to install.
   - Upload entire file by not marking anything.
 
-## Installation
-
+# Installation
+### Automatic
+- [Click Here](https://marketplace.visualstudio.com/items?itemName=Barzuka.sourcebinupload) or search SourcebinUpload on the marketplace
+### Manual
 - Download the ```build.vsix``` file
 - Go to the extension section on vscode
 - Click the three dots at the top
