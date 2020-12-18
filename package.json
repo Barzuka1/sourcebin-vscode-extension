@@ -1,25 +1,33 @@
 {
 	"name": "sourcebinupload",
-	"displayName": "SourcebinUpload",
+	"displayName": "Sourcebin Upload",
 	"description": "Upload code to sourcebin",
-	"version": "1.0.0",
+	"version": "1.2.2",
+	"icon": "icon.png",
+	"repository": {
+		"url": "https://github.com/Barzuka1/sourcebin-vscode-extension.git"
+	},
 	"engines": {
 		"vscode": "^1.52.0"
 	},
 	"publisher": "Barzuka",
-	
 	"categories": [
 		"Other"
 	],
 	"activationEvents": [
-		"*"
+		"onCommand:sourcebinupload.makeBin",
+		"onCommand:sourcebinupload.saveBin"
 	],
 	"main": "./extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "sourcebinupload.createBin",
+				"command": "sourcebinupload.makeBin",
 				"title": "Upload to Sourcebin"
+			},
+			{
+				"command": "sourcebinupload.saveBin",
+				"title": "Get from Sourcebin"
 			}
 		]
 	},
@@ -38,5 +46,8 @@
 		"mocha": "^8.1.3",
 		"typescript": "^4.1.2",
 		"vscode-test": "^1.4.1"
+	},
+	"dependencies": {
+		"axios": "^0.21.0"
 	}
 }
